@@ -1,3 +1,6 @@
+# Jetbrains IDE stuff
+.idea
+
 # Prerequisites
 *.d
 
