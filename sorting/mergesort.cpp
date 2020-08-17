@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 /*
  * Merges the array passed in by reference
@@ -8,7 +9,6 @@
 template <class T>
 void merge(std::vector<T> &array, int start, int midPoint, int end){
     if(end > start) {
-        // Is there a better way to copy vectors in C++?
         std::vector<T> left (array.begin() + start, array.begin() + midPoint + 1);
         std::vector<T> right (array.begin() + midPoint + 1, array.begin() + end + 1);
 
@@ -17,18 +17,27 @@ void merge(std::vector<T> &array, int start, int midPoint, int end){
         int arrayIterator = start;
 
         while(leftIterator != left.size() && rightIterator != right.size()){
-            if(left[leftIterator] <= right[rightIterator]){
+            if(left[leftIterator] <= right[rightIterator])
                 array[arrayIterator++] = left[leftIterator++];
-            }
-            else {
+            else
                 array[arrayIterator++] = right[rightIterator++];
-            }
         }
-        // Probably a standard C++ function to do this...
-        if(rightIterator == right.size())
-            while(arrayIterator <= end) array[arrayIterator++] = left[leftIterator++];
-        else if(leftIterator == left.size())
-            while(arrayIterator <= end) array[arrayIterator++] = right[rightIterator++];
+
+        typedef typename std::vector<T>::iterator it;
+        it remainingIterator = array.begin() + arrayIterator;
+        it remainingBegin;
+        it remainingEnd;
+
+        if(rightIterator == right.size()){
+           remainingBegin = left.begin() + leftIterator;
+           remainingEnd = left.end();
+        }
+        else { // leftIterator == left.size()
+            remainingBegin = right.begin() + rightIterator;
+            remainingEnd = right.end();
+        }
+
+        std::copy(remainingBegin, remainingEnd, remainingIterator);
     }
 }
 
@@ -51,7 +60,7 @@ void mergeSort(std::vector<T> &array){
 }
 
 int main(int argc, char** argv) {
-    std::vector<int> test = {1,5,21,5,2,124,8,2,125,13215,3421,2,1,3,47};
+    std::vector<int> test = {5,1,21,5,2,124,8,2,125,13215,3421,2,1,3,47};
     mergeSort(test);
     std::cout << "finished!\n";
     for(auto it:test) std::cout << it << " ";

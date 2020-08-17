@@ -1,3 +1,8 @@
+# Makefiles
+CMakeLists.txt
+Makefile
+cmake-build-debug
+
 # Jetbrains IDE stuff
 .idea
 
