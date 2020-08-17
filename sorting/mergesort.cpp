@@ -33,23 +33,27 @@ void merge(std::vector<T> &array, int start, int midPoint, int end){
 }
 
 template <class T>
-void mergeSortHelper(std::vector<T> &array, int start, int end){
+void mergeSort(std::vector<T> &array, int start, int end){
     if(end > start) {
         int midPoint = (int) ((end+start)/2);
-        mergeSortHelper(array, start, midPoint);
-        mergeSortHelper(array, midPoint+1, end);
+        mergeSort(array, start, midPoint);
+        mergeSort(array, midPoint+1, end);
         merge(array, start, midPoint, end);
     }
 }
 
+/*
+* Overloaded function to provide better API
+*/
 template <class T>
 void mergeSort(std::vector<T> &array){
-    mergeSortHelper(array, 0, array.size()-1);
+    mergeSort(array, 0, array.size()-1);
 }
 
 int main(int argc, char** argv) {
-    std::vector<int> test = {0,235,124,1412,412,312,312,312,4,124,12};
-    mergeSort<int>(test);
+    std::vector<int> test = {1,5,21,5,2,124,8,2,125,13215,3421,2,1,3,47};
+    mergeSort<int>(test,0, test.size()-1);
     std::cout << "finished!\n";
     for(auto it:test) std::cout << it << " ";
+    std::cout << "\n";
 }
