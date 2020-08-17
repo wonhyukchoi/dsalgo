@@ -52,7 +52,7 @@ void mergeSort(std::vector<T> &array){
 
 int main(int argc, char** argv) {
     std::vector<int> test = {1,5,21,5,2,124,8,2,125,13215,3421,2,1,3,47};
-    mergeSort<int>(test,0, test.size()-1);
+    mergeSort(test);
     std::cout << "finished!\n";
     for(auto it:test) std::cout << it << " ";
     std::cout << "\n";
