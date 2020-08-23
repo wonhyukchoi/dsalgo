@@ -7,6 +7,7 @@ def swap(array: list, i: int, j: int) -> None:
 
 
 def insertion_sort(array: list) -> None:
+	""" Wikipedia page gif should be helpful enough. """
 	idx = 1
 	# Can't use enumerate(array) b/c of index boundary
 	while idx < len(array):
