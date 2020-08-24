@@ -4,6 +4,10 @@
 #include <string>
 #include <stdexcept>
 
+/* 
+* Mostly an exercise to use std::unique_ptr.  
+*/
+
 template <typename T> struct Node {
     T value;
     std::unique_ptr<Node> left;

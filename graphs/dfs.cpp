@@ -1,7 +1,14 @@
-#include "common_header.h"
+#include <iostream>
+#include "graph.h"
 
-void dfs(Graph* graph){}
+template <typename TKey, typename TWeight>
+void depthFirst(Graph<TKey, TWeight>* graph){
+    std::cout << "Hello World" << std::endl;
+}
 
 int main(int argc, char** argv){
-	return 0;	
+    Graph<int,int> exampleGraph = makeExample();
+    depthFirst(&exampleGraph);
+
+    return 0;
 }

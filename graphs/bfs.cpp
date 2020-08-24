@@ -1,7 +1,14 @@
-#include "common_header.h"
+#include <iostream>
+#include <queue>
+#include "graph.h"
 
-void bfs(Graph* graph){}
+template <typename TKey, typename TWeight>
+void breadthFirst(Graph<TKey, TWeight>* graph){
+    std::cout << "Hello World" << std::endl;
+}
 
 int main(int argc, char** argv){
-	return 0;	
+    breadthFirst(&exampleGraph);
+
+    return 0;
 }
