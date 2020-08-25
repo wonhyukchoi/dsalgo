@@ -7,7 +7,7 @@
 
 template <typename TKey, typename TWeight>
 void Graph<TKey, TWeight>::addVertex(TKey value) {
-    vertices.insert(std::make_pair(value, std::make_unique<Vertex>(value)));
+    vertices.insert(std::make_pair(value, Vertex(value)));
 }
 
 template <typename TKey, typename TWeight>
@@ -20,8 +20,8 @@ void Graph<TKey, TWeight>::addDirectedEdge(TKey src, TKey dst, TWeight weight) {
     else if(vertices.find(dst) == vertices.end())
         throw std::invalid_argument("Cannot find destination");
 
-    Vertex* vertex = srcPtr->second.get();
-    vertex->adjVertexList->push_front(Adjacent(dst, weight));
+    Vertex *vertex = &srcPtr->second;
+    vertex->adjVertexList.push_front(Adjacent(dst, weight));
 
 }
 

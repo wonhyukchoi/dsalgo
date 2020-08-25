@@ -17,19 +17,14 @@ class Graph{
 
     struct Vertex {
         TKey value;
-        std::unique_ptr<std::forward_list<Adjacent>> adjVertexList;
-        explicit Vertex(const TKey value){
-            this->value = value;
-            adjVertexList = std::make_unique<std::forward_list<Adjacent>>();
-        }
+        std::forward_list<Adjacent> adjVertexList;
+        explicit Vertex(const TKey value) : value(value) {};
     };
 
-private:
+public:
     // Since keys can be non-numeric,
     // use a hashmap to index into individual adj lists
-    std::unordered_map<TKey, std::unique_ptr<Vertex>> vertices;
-
-public:
+    std::unordered_map<TKey, Vertex> vertices;
 
     void addVertex(TKey value);
 
