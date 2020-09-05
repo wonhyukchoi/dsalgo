@@ -50,6 +50,7 @@ void trie_delete(struct TrieNode* node){
 }
 
 void trie_insert(char* word, struct TrieNode* trie){
+    // Switch to recursion so that we can pass in the parent constantly.
     struct TrieNode* curr_child = trie;
     for(size_t i=0; i<strlen(word); i++){
         char current_char = *(word+i);
