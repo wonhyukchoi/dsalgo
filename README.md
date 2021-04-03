@@ -10,8 +10,5 @@ Brush up on knowledge & serve as resource for later.
 * Trees: Binary search tree
 * Dynamic Programming: Top-down (memoization) and bottom-up 
 
-## Hopeful additions
-* Tries
-* Balanced search trees (R-b tree, b-tree)
-* Hashtables (implement hash function)
-* ...and more!
+## TODO
+* rb-tree
